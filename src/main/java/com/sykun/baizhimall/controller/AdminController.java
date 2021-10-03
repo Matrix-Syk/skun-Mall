@@ -51,6 +51,7 @@ public class AdminController {
             IPage<AdminEntity> pages = adminService.page(page, null);
             map.put("data", pages);
         }
+        System.out.println("测试git");
         return map;
     }
 
