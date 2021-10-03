@@ -49,7 +49,7 @@ public class BrandController {
     private final String endpoint = "https://oss-cn-beijing.aliyuncs.com";
     // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
     private final String accessKeyId = "LTAI5tRkRRd";
-    private final String accessKeySecret = "2dfXF7CfTlz";
+    private final String accessKeySecret = "2dfXF7CfTl";
     private final String bucketName = "sykun-mall";
 
     @PostMapping("/list")
