@@ -29,7 +29,7 @@ class BaizhiMallApplicationTests {
         // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
         String accessKeyId = "LTAtRk";
         String accessKeySecret = "2F7CfTlz";
-        String bucketName = "sykun-mall";
+        String bucketName = "sykun";
 
         String path = "https:/n-beijing.aliyuncs.com";
         String objectName = "2021-07-06/425c57394a1c45a5b2ba70f354792c13_林山简约风景4k壁纸_彼岸图网.jpg";
