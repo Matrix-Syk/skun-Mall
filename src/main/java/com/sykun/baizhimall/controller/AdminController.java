@@ -86,7 +86,7 @@ public class AdminController {
         return map;
     }
 
-    @PostMapping("/update")
+    /*@PostMapping("/update")
     public Map<String, Object> updateUser(@RequestBody AdminEntity adminEntity) {
         HashMap<String, Object> map = new HashMap<>();
         AdminEntity old = adminService.getById(adminEntity.getId());
@@ -104,9 +104,9 @@ public class AdminController {
             map.put("msg", "error");
         }
         return map;
-    }
+    }*/
 
-    @PostMapping("/save")
+    /*@PostMapping("/save")
     public Map<String, Object> saveUser(@RequestBody AdminEntity adminEntity) {
         HashMap<String, Object> map = new HashMap<>();
         boolean flag = false;
@@ -125,12 +125,12 @@ public class AdminController {
             map.put("msg", "error");
         }
         return map;
-    }
+    }*/
 
     /**
      * 添加或更新时向中间表中添加数据
      */
-    public void changeMiddle(AdminEntity adminEntity) {
+    /*public void changeMiddle(AdminEntity adminEntity) {
         String id = adminEntity.getId();
         adminRoleService.remove(new QueryWrapper<AdminRoleEntity>().eq("admin_id", id));
         List<AdminRoleEntity> list = new ArrayList<>();
@@ -141,6 +141,6 @@ public class AdminController {
             list.add(adminRoleEntity);
         }
         adminRoleService.saveBatch(list);
-    }
+    }*/
 }
 

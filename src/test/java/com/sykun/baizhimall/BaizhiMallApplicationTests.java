@@ -4,6 +4,7 @@ package com.sykun.baizhimall;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.sykun.baizhimall.dao.ResourceDao;
+import com.sykun.baizhimall.entity.AdminRoleEntity;
 import com.sykun.baizhimall.service.ResourceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +12,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 class BaizhiMallApplicationTests {
@@ -59,6 +65,30 @@ class BaizhiMallApplicationTests {
             System.out.println(str2[i]);     
         }
     }
+    @Test
+    void test123(){
+        AdminRoleEntity one = new AdminRoleEntity("20", "10", "100", 1, 2);
+        AdminRoleEntity two = new AdminRoleEntity("20", "20", "100", 1, 2);
+        AdminRoleEntity three = new AdminRoleEntity("20", "30", "100", 1, 2);
+        AdminRoleEntity four = new AdminRoleEntity("20", "10", "100", 1, 2);
+        AdminRoleEntity five = new AdminRoleEntity("20", "20", "100", 1, 2);
+        List<AdminRoleEntity> newList = new ArrayList<>();
+        List<AdminRoleEntity> oldList = new ArrayList<>();
+        newList.add(one);
+        newList.add(two);
+        newList.add(three);
+        oldList.add(four);
+        oldList.add(five);
+        Map<String, AdminRoleEntity> collect = newList.stream().collect(Collectors.toMap(AdminRoleEntity::getAdminId, Function.identity()));
+        for (AdminRoleEntity adminRoleEntity : oldList) {
+            if (collect.containsKey(adminRoleEntity.getAdminId())){
+                System.out.println(adminRoleEntity);
+            }
+        }
+    }
+
+
+
 
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);

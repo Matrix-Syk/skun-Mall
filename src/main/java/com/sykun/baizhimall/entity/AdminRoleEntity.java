@@ -1,13 +1,14 @@
 package com.sykun.baizhimall.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -38,4 +39,12 @@ public class AdminRoleEntity implements Serializable {
     private Integer pageNum;
     @TableField(exist = false)
     private Integer pageSize;
+
+    public AdminRoleEntity(String id, String adminId, String roleId, Integer pageNum, Integer pageSize) {
+        this.id = id;
+        this.adminId = adminId;
+        this.roleId = roleId;
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
 }
