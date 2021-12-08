@@ -4,18 +4,16 @@ package com.sykun.baizhimall;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.sykun.baizhimall.dao.ResourceDao;
-import com.sykun.baizhimall.entity.AdminRoleEntity;
+import com.sykun.baizhimall.dao.StudentDao;
+import com.sykun.baizhimall.entity.Student;
 import com.sykun.baizhimall.service.ResourceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -28,6 +26,8 @@ class BaizhiMallApplicationTests {
     @Resource
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Resource
+    private StudentDao Dao;
     @Test
     void contextLoads() {
         // yourEndpoint填写Bucket所在地域对应的Endpoint。以华东1（杭州）为例，Endpoint填写为https://oss-cn-hangzhou.aliyuncs.com。
@@ -67,6 +67,21 @@ class BaizhiMallApplicationTests {
     }
     @Test
     void test123(){
+        Student three = new Student("1","___________");
+        Student five = new Student("3","wangwu");
+        Student four = new Student("4","wangwu");
+        Student two = new Student("1","lisi");
+        List<Student> list = new ArrayList<>();
+        list.add(five);
+        list.add(three);
+        list.add(four);
+        list.add(two);
+        int i = Dao.insertOrUpdateBatch(list);
+        System.out.println(i);
+    }
+
+    @Test
+    void test1233(){
         AdminRoleEntity one = new AdminRoleEntity("20", "10", "100", 1, 2);
         AdminRoleEntity two = new AdminRoleEntity("20", "20", "100", 1, 2);
         AdminRoleEntity three = new AdminRoleEntity("20", "30", "100", 1, 2);
@@ -85,23 +100,5 @@ class BaizhiMallApplicationTests {
                 System.out.println(adminRoleEntity);
             }
         }
-    }
-
-
-
-
-    public static void main(String[] args) {
-        Scanner scanner=new Scanner(System.in);
-        String str1="";
-        String str2="";
-        System.out.println("请输入第一个大数");
-        str1=scanner.next();
-        System.out.println("请输入第二个大数");
-        str2=scanner.next();
-        BigInteger n1=new BigInteger(str1),
-                n2=new BigInteger(str2),
-                result=null;
-        result=n1.add(n2);
-        System.out.println("和:"+result.toString());
     }
 }

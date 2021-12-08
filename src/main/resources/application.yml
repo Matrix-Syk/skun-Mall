@@ -23,3 +23,4 @@ mybatis-plus:
     db-config:
       logic-delete-value: 0
       logic-not-delete-value: 1
+  mapper-locations: classpath*:com/sykun/baizhimall/mapper/*.xml

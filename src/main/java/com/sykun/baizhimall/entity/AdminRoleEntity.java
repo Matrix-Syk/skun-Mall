@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -18,7 +20,9 @@ import java.io.Serializable;
  * @author sykun
  * @since 2021-07-17
  */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("bz_admin_role")
@@ -39,12 +43,4 @@ public class AdminRoleEntity implements Serializable {
     private Integer pageNum;
     @TableField(exist = false)
     private Integer pageSize;
-
-    public AdminRoleEntity(String id, String adminId, String roleId, Integer pageNum, Integer pageSize) {
-        this.id = id;
-        this.adminId = adminId;
-        this.roleId = roleId;
-        this.pageNum = pageNum;
-        this.pageSize = pageSize;
-    }
 }

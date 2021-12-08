@@ -1,17 +1,17 @@
 package com.sykun.baizhimall.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -21,7 +21,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author sykun
  * @since 2021-07-05
  */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("bz_admin")

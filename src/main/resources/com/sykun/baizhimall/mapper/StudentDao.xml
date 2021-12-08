@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sykun.baizhimall.dao.StudentDao">
+
+    <resultMap type="com.sykun.baizhimall.entity.Student" id="StudentMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StudentMap">
+        select
+          id, username
+        from student
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StudentMap">
+        select
+          id, username
+        from student
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from student
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into student(username)
+        values (#{username})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into student(username)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.username})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into student(id,username)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id},#{entity.username})
+        </foreach>
+        on duplicate key update
+        username = values(username)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update student
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from student where id = #{id}
+    </delete>
+
+</mapper>
+
